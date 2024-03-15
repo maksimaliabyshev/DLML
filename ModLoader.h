@@ -11,6 +11,7 @@ struct ModInfo
 	std::string ModDescription = "No Description";
 	std::string ModVersion = "Unknown Version";
 	bool IsEnabled = 0;
+	bool IsRpack = 0;
 	bool WasInitialized = 0;
 };
 
