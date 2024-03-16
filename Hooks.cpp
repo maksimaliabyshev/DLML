@@ -1,4 +1,4 @@
-#include "Hooks.h"
+﻿#include "Hooks.h"
 #include <algorithm>
 //#include "TestHook.h"
 
@@ -7,6 +7,7 @@ add_source Add_Source;
 bool Add_Source_Hook(char const* Path, int FFSAddSourceFlags) {
 	bool Status = Add_Source(Path, FFSAddSourceFlags);
 
+	const char* thread = "DLML ResPack";
 	if (Status == true) {
 		std::string message = "Added Source: " + (std::string)Path + " SourceFlag: " + std::to_string(FFSAddSourceFlags) + "\n";
 		Log(message);
@@ -56,6 +57,143 @@ openPack(CResourceDataPack1, "DW\\Data\\static_load_PC.rpack", 1);
 loadPack(CResourceDataPack1, 1);
 */			
 
+
+//getting Messi 
+/*
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢉⣉⣉⣹⣿⣿⣭⡍⣉⡉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⣯⡍⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣯⣿⣿⣿⣿⣿⣿⣶⣭⣢⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣺⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣶⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣷⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡯⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⢊⠡⣿⣿⣿⣷⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣭⣿⡿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⢀⢃⠳⣹⣿⣿⢯⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢳⣻⣷⣾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⢌⢢⣱⢹⣿⣯⢟⣿⣿⣿⣥⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣯⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⢌⠢⣉⠖⣻⣿⣿⣿⣿⣿⣿⣿⣯⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠈⢻⣿⡂⠀⠀⠀⠀⠀⠠⣠⢠⢌⡰⢎⡱⡰⢈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⣿⣿⣿⣿⠟⠀⠀⠀⠈⢿⢳⣄⠀⠀⢀⣤⣤⡐⢡⢚⣿⣯⡓⣥⠓⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠤⠈⠙⡄⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⡽⣿⡿⣿⡽⠟⡌⠻⣿⣿⡆⠀⠀⠀⠀⢻⣋⣿⠀⠀⣾⡿⣟⠃⠆⣭⠦⠿⢲⣌⢿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠱⠲⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⢨⣿⣿⣿⣿⡽⣹⠣⠝⠿⠉⠀⠀⠀⠐⣿⢱⡀⠀⠀⠀⡏⢳⣿⠀⠀⣾⣱⣟⣿⠿⠁⠀⠘⠥⣚⣬⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⢠⡧⠀⠐⣦⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⢳⡘⠡⠂⠀⠀⠀⠀⠀⠀⠀⠓⠛⠀⠀⠀⠀⠀⢹⣿⠀⠐⣿⡿⡈⠌⠄⠀⠀⠀⣣⢘⡾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢅⣹⣿⠃⠀⢀⠈⠒⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡯⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⡏⢧⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⣿⣷⢍⠒⠀⠀⠀⠠⡐⠪⣝⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢋⣀⡀⠟⠀⠀⠁⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠈⠔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣷⣅⠀⢀⡽⣿⡧⠀⠀⠀⢀⠐⢨⡑⠾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⣶⣿⣇⠀⣄⣧⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⡁⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⢉⣿⣿⣿⡀⢸⣿⡿⠇⠀⠀⠀⠠⠑⠂⡌⢓⡒⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⣼⣿⠋⠀⡅⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⡌⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠁⣸⣟⢩⣿⣭⠶⣿⠀⠀⠀⠀⠀⠡⢉⠐⢂⠂⠜⣠⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣮⡿⠋⠲⣤⣵⣄⣀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⣿⡿⡃⢻⣿⠐⣻⠀⠀⠀⠀⠀⠁⠈⠄⠁⢈⠐⠄⢪⣙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢷⣶⣿⣿⣿⣿⣿⣶⣄⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡗⡇⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠻⢃⡇⢸⣿⡠⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠐⡐⢬⣛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⠀⣧⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢡⢻⡇⢰⣿⡳⣽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡐⢢⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡀⢻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⣽⡇⠈⢻⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢐⠠⢯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡙⠄⠈⠫⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢩⣀⣀⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠂⠄⡡⢂⣍⣛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠐⡀⠀⠀⠻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠉⢿⡛⠇⠀⠀⠀⠀⠀⠀⠀⠠⢁⠎⠴⣙⣾⣿⣿⣿⣿⣿⠟⣿⣛⣿⢻⣟⠿⣿⣿⣿⠿⢣⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣧⠀⠀⠀⠀⠀⠀⠀⠀⠐⡨⢌⢣⣿⣿⣿⣿⣿⣿⣿⣟⣳⣛⡞⡓⠜⡉⢓⠘⠋⣼⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢠⢦⡟⠁⡀⠀⠀⠀⠀⠀⠀⠀⢀⠖⣨⢾⣿⣿⣿⣿⣿⣿⣿⢶⡳⢖⠨⢘⠠⠁⡀⠀⣰⣿⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠭⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣡⣸⣷⢠⠅⡀⠀⠀⠀⠀⠀⠀⢌⡚⣴⢯⣿⣿⣿⣿⣿⣿⢯⢦⡱⢈⠂⠀⠀⠂⠀⣴⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡟⠡⠂⠀⠀⠀⠀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⢘⡯⣿⣿⣿⡇⠎⠀⠀⠀⠀⠀⠀⡌⢢⣝⣺⣻⢿⣿⣿⣿⣿⣿⣽⢂⠆⡡⢈⠀⠀⠀⣸⣿⣿⣿⣯⣿⡷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠃⠄⠀⠀⠀⠀⠀⠀⠀⠡⢀⠀⠀⠀⠀⠀⠀⠸⡇⢾⣯⠛⢿⠂⠀⠀⠀⠀⠀⠒⣬⢳⣭⢷⡽⣿⣻⣿⣿⣿⣿⢟⡢⡘⢀⠀⠀⠀⣶⣿⣿⡿⣿⣿⣿⣿⣿⡟⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⢀⡇⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠄⠀⠀⠀⠀⠀⣯⣿⠃⠀⠐⡷⠀⠀⠀⠀⢨⡱⢎⣷⣯⣿⢿⡿⣿⣿⣿⣿⣿⢯⡱⠌⣂⠐⠀⣰⣿⣿⣿⡷⣿⣿⣿⣿⡟⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠸⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢌⣠⣀⠀⠀⣨⣿⠏⠀⠀⠀⢳⠀⠀⠀⣄⢳⡼⣟⣾⣷⣿⣻⣿⣷⣿⣿⣿⣿⢶⡡⢎⠀⠘⢰⣿⣿⣿⣿⣿⣻⣿⣽⡟⠁⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⡐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⠛⠻⠿⠟⠁⠀⠀⠀⠀⣨⣧⣤⣣⣌⣿⣿⣯⣿⣿⣽⣿⣿⣿⣻⣿⣿⣽⣯⠴⣈⠂⣠⣿⣿⣿⣿⣿⡿⣿⣿⣟⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣇⡀⠂⠀⠀⠀⢀⣠⠔⠲⠿⢽⢷⣿⣽⣟⡿⣿⣿⣿⣿⣿⣻⡿⣽⣿⣿⣿⣘⠢⢄⢡⣿⣿⣿⣿⣿⣿⣛⣿⣿⠋⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⡏⠉⠢⣖⠾⡿⠿⠟⠀⠀⠀⠀⠀⠙⣿⣾⣿⣿⣿⣿⣿⡿⣷⣿⣿⣿⣿⣳⢫⠐⢂⣾⣿⣿⣿⣿⣿⣿⣯⣿⡏⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠁⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⢿⣿⡇⠀⠀⠈⠳⡑⠒⠁⠀⠀⠀⠀⠀⠀⠀⠻⣿⣿⣿⣿⢯⣿⣟⡷⣿⣿⣯⡻⡽⢀⢲⣿⣿⣿⣿⣿⣿⣿⢿⣿⠁⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣀⣀⣀⣀⣀⣀⣀⣀⣈⣦⣄⣀⣀⣀⣀⣀⣠⣠⣤⣾⣫⣾⣿⣇⣀⣀⣠⣄⣤⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣿⣿⣿⣿⣻⣜⣻⣼⣳⣿⣫⣕⣸⣀⣿⣿⣿⣿⣿⣿⣾⣿⣿⣧⣠⣀⣀⣀⣀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+*/
+
+
+
+
+
+
+
+
+typedef void* (*allocandloadpack)(void* param_1, const char* param_2);
+allocandloadpack AllocAndLoadPack;
+void* AllocAndLoadPack_Hook(void* param_1, const char* param_2) {
+	AddLog("param_1 :  %x\n", (void*)param_1);
+	AddLog("param_2 :  %x\n", (void*)param_2);
+
+	return AllocAndLoadPack(param_1, param_2);
+}
+
+
+/*bool PackLoader::Load(undefined8 param_1,undefined8 somesortofpath,undefined8 *CResourceDataPack,
+                     undefined8 param_4,undefined8 param_5,int param_6,int param_7)
+					 
+
+	fs::full_path((char *)&local_78)
+	iVar7 = loadrpack(param_1,pcVar11,param_3,uVar1,0);
+	fs::exists and malloc abunch
+	CResourceDataPack::OpenPack
+
+	this is also the same func that the game uses, as shown in alot of log messages
+	looks like this gets the path, loads it into mem, then calls openpack
+
+	kinda like my attempt earlier
+	void* buffthing = malloc(0xd0);
+	OpenPack_Hook(buffthing, ModInfoList[i].ModPath.c_str(), 0x10);
+	but like actually good as this is more like
+	EngineDll + 0x412e70
+
+
+	looks like it takes the name of the pack it wants to load and searches for it and any others with the same type
+	like textures_pc.rpack textures_0_pc.rpack textures_1_pc.rpack 
+	with                                                                               
+    PackLoader::Load(param_1[0x15f],"common_textures",uVar12,0,in_stack,uVar35, uVar16,uVar34);
+	but also I beleve we can point it to a folder to search for such as
+
+
+	puVar27 = SomeFunction(local_4c8,"DW/Data/common_textures_%d",iVar9);
+
+	if (*puVar27 != NULL) {
+		puVar32 = *puVar27;
+	}                                                                                 
+    PackLoader::Load(param_1[0x15f],puVar32,uVar12,0,in_stack,uVar35,uVar16,uVar34);
+
+*/
+typedef void* (*packloaderload)(void* param_1, const char* maybepath, void* CResourceDataPack, __int64 param_4, __int64 param_5, int param_6, int param_7);
+packloaderload PackLoaderLoad;
+void* PackLoaderLoad_Hook(void* param_1, const char* maybepath, void* CResourceDataPack, int param_4, __int64 param_5, int param_6, int param_7) {
+	AddLog("SomeAddress :  %p\n", param_1); //not sure how this is used, but it is used and it does not change
+	AddLog("maybepath :  %s\n", maybepath); //going to try "Mods/Rpacks/common_textures_%d"
+	AddLog("CResourceDataPack PackLoaderLoad_Hook :  %p\n", CResourceDataPack);//maybe just alloc memory or just malloc(0xd0); like before
+	AddLog("param_4 :  %i\n", param_4); //0
+	AddLog("param_5 :  %p\n", param_5); //0
+	AddLog("param_6 :  %i\n", param_6); //0
+	AddLog("param_7 :  %i\n", param_7); //1
+	return PackLoaderLoad(param_1, maybepath, CResourceDataPack, param_4, param_5, param_6, param_7);
+}
+
+
+typedef bool (*fspathpath)(const char* BasePath, const char* SubPath, bool option);
+fspathpath FsPathPath;
+bool FsPathPath_Hook(const char* BasePath, const char* SubPath, bool option) {
+	//AddLog("bas :  %s\n", BasePath);
+	//AddLog("sub :  %s\n", SubPath);
+	//AddLog("bool :  %s\n", std::to_string(option));
+	return FsPathPath(BasePath, SubPath, option);
+}
+
+typedef bool (*fsexist)(const char* SubPath);
+fsexist FsExist;
+bool FsExist_Hook(const char* SubPath) {
+	AddLog("FsExist SubPath :  %s\n", SubPath);
+	bool fsexist = FsExist(SubPath);
+
+	AddLog("FsExist Ret :  %s\n", std::to_string(fsexist));
+	return fsexist;
+}
+
+
+typedef bool(*alternativeloadpack)(void* something, const char* path, void* CResourceDataPack, UINT param_4, char* param_5);
+alternativeloadpack AlternativeLoadPack;
+
+//ENUM loadrpack(longlong* param_1, char* PathMostLikely, CResourceDataPack** CResourceDataPack,uint param_4, char* param_5)
+
+bool AlternativeLoadPack_Hook(void* something, const char* path, void* CResourceDataPack, UINT param_4, char* param_5) {
+	//AddLog("ResorceDataPack :  %p\n", (void*)CResourceDataPack1);
+	//AddLog("ResorceDataPack1 :  %p\n", (void*)ResorceDataPack);
+	//Log(path);
+	return AlternativeLoadPack(something, path, CResourceDataPack, param_4, param_5);
+}
+
+
 typedef void(__cdecl* initializegamescript)(LPCSTR param_1);
 initializegamescript InitializeGameScript = nullptr;
 void InitializeGameScript_Hook(LPCSTR param_1) {
@@ -71,6 +209,62 @@ void InitializeGameScript_Hook(LPCSTR param_1) {
 			//LoadPack_Hook(ModInfoList[i].ModPath.c_str(), true, true, true, (__int64)buffthing);
 			//buffthing = static_cast<char*>(buffthing) + 8;
 			//LoadData_Hook(buffthing, false);
+			//void* pvVar4 = malloc(0x1040);
+
+			void* Param_1 = NULL; //void* pvVar41 = malloc(0x1040);
+			void* CResourceDataPack = NULL; //void* CResourceDataPack = malloc(0xd0);
+			const char* Path = ModInfoList[i].ModPath.c_str();
+			const char* thread = "DLML ResPack";
+
+			bool Param6 = false;
+			bool Param7 = true;
+
+			UINT uVar6 = 0x102;
+			if (Param6 != 0) {
+				uVar6 = 0x100;
+			}
+			UINT uVar1 = uVar6 | 0x200;
+			if (Param7 != 0) {
+				uVar1 = uVar6;
+			}
+
+			int iVar7 = AlternativeLoadPack_Hook(Param_1, Path, CResourceDataPack, uVar1, 0);
+			Log(std::to_string(iVar7) + "\n");
+			if (iVar7 < 0) { //Fail State                  
+				if (iVar7 == -8) {
+					Log("mid af\n");
+					//Log(LogType::ERRR, thread, "Already loaded | %s.\n");//, Path, true);
+				}
+				else {
+					bool bVar5 = FsExist_Hook(Path);
+					if (bVar5) {
+						Log("bad2\n");
+						//Log(LogType::ERRR, thread, "FAILED         | %s not loaded (version incorrect?).\n");//, Path, true);
+					}
+					else {
+						Log("bad3\n");
+						//Log(LogType::ERRR, thread, "Missing        | %s is missing.\n");//, Path, true);
+					}
+				}
+
+			}
+			else {
+				Log("good\n");
+				//Log(LogType::ERRR, thread, "Loaded         | %s.\n");//, Path, true);
+			}
+			//void* buffthing = malloc(0xd0);
+			//const char* path = ModInfoList[i].ModPath.c_str();
+			//FsExist_Hook((char*)path);
+			//PackLoaderLoad_Hook(NULL, "../../Mods/Rpacks/common_textures_%d", NULL, 0, 0, 0, 1);
+			//PackLoaderLoad_Hook(NULL, "../../Mods/Rpacks/common_textures_%d", NULL, 0, 0, 1, 1);
+			//PackLoaderLoad_Hook(NULL, "../../Mods/Rpacks/common_textures_%d", NULL, 0, 0, 1, 0);
+			//PackLoaderLoad_Hook(NULL, "../../Mods/Rpacks/common_textures_%d", NULL, 0, 0, 0, 0);
+
+			//void* pvVar41 = malloc(0x1040);
+
+			//void* buffthing1 = malloc(0xd0);
+
+			//PackLoaderLoad_Hook(pvVar41, ModInfoList[i].ModPath.erase(ModInfoList[i].ModPath.length() - 9, ModInfoList[i].ModPath.length()).c_str(), buffthing1, 0, 0, 0, 1);
 
 		}
 		else
@@ -126,8 +320,14 @@ int GetCategoryLevel_Hook(int This, char* Catagory) { //GetCategoryLevel
 //whatever
 FARPROC InitializeGameScript_Address;
 FARPROC LoadPack_Address;
+FARPROC AllocAndLoadPack_Address;
 FARPROC OpenPack_Address;
 FARPROC CResourceDataPack_Address;
+FARPROC PackLoaderLoad_Address;
+FARPROC FsPathPath_Address;
+FARPROC FsExist_Address;
+FARPROC AlternativeLoadPack_Address;
+
 FARPROC Add_Source_Address;
 FARPROC CLogV_Address;
 FARPROC GetCategoryLevel_Address;
@@ -143,6 +343,12 @@ BOOL CreateHooks(HMODULE hmodule) {
 	LoadPack_Address = GetProcAddress(EngineDll, "?LoadPack@IGame@@QEAA_NAEBV?$string_base@D@ttl@@_N1PEAPEAUSRPackHandle@1@@Z");//LoadData is used for rpack patching instead of using "?LoadPack@IGame@@QEAA_NAEBV?$string_base@D@ttl@@_N1PEAPEAUSRPackHandle@1@@Z"); like the game does
 	OpenPack_Address = GetProcAddress(EngineDll, "?OpenPack@CResourceDataPack@@QEAA?AW4ENUM@EResPackErrorCode@@PEBDI@Z");
 	CResourceDataPack_Address = GetProcAddress(EngineDll, "??0CResourceDataPack@@QEAA@XZ");
+	AllocAndLoadPack_Address = (FARPROC)((DWORD_PTR*)EngineDll + 0x412e70 / (2 * sizeof(DWORD)));
+	PackLoaderLoad_Address = (FARPROC)((DWORD_PTR*)EngineDll + 0x401870 / (2 * sizeof(DWORD)));
+	AlternativeLoadPack_Address = (FARPROC)((DWORD_PTR*)EngineDll + 0x400460 / (2 * sizeof(DWORD)));
+
+	FsPathPath_Address = GetProcAddress(FilesystemDll, "??0path@fs@@QEAA@PEBD_N@Z");
+	FsExist_Address = GetProcAddress(FilesystemDll, "?exists@fs@@YA_NPEBD@Z");
 
 	Add_Source_Address = GetProcAddress(FilesystemDll, "?add_source@fs@@YA_NPEBDW4ENUM@FFSAddSourceFlags@@@Z");
 	CLogV_Address = GetProcAddress(FilesystemDll, "?_CLogV@@YAXW4TYPE@ELevel@Log@@PEBD1HW4ENUM@CLFilterAction@@W44CLLineMode@@1PEAD@Z");
@@ -168,10 +374,47 @@ BOOL CreateHooks(HMODULE hmodule) {
 	}
 	if (MH_CreateHook(CResourceDataPack_Address, &CResourceDataPack_Hook, reinterpret_cast<void**>(&CResourceDataPack)) != MH_OK)
 	{
-		std::string errorMessage = std::string("Unable to create OpenPack hook at location: %p"), OpenPack_Address;
+		std::string errorMessage = std::string("Unable to create CResourceDataPack hook at location: %p"), CResourceDataPack_Address;
 		Log(errorMessage);
 		throw std::runtime_error(errorMessage);
 	}
+	if (MH_CreateHook(AllocAndLoadPack_Address, &AllocAndLoadPack_Hook, reinterpret_cast<void**>(&AllocAndLoadPack)) != MH_OK)
+	{
+		std::string errorMessage = std::string("Unable to create AllocAndLoadPack hook at location: %p"), AllocAndLoadPack_Address;
+		Log(errorMessage);
+		throw std::runtime_error(errorMessage);
+	}
+	if (MH_CreateHook(PackLoaderLoad_Address, &PackLoaderLoad_Hook, reinterpret_cast<void**>(&PackLoaderLoad)) != MH_OK)
+	{
+		std::string errorMessage = std::string("Unable to create PackLoaderLoad hook at location: %p"), PackLoaderLoad_Address;
+		Log(errorMessage);
+		throw std::runtime_error(errorMessage);
+	}
+
+	/*
+	if (MH_CreateHook(FsPathPath_Address, &FsPathPath_Hook, reinterpret_cast<void**>(&FsPathPath)) != MH_OK)
+	{
+		std::string errorMessage = std::string("Unable to create FsPathPath hook at location: %p"), FsPathPath_Address;
+		Log(errorMessage);
+		throw std::runtime_error(errorMessage);
+	}
+	*/
+	if (MH_CreateHook(FsExist_Address, &FsExist_Hook, reinterpret_cast<void**>(&FsExist)) != MH_OK)
+	{
+		std::string errorMessage = std::string("Unable to create FsExist hook at location: %p"), FsExist_Address;
+		Log(errorMessage);
+		throw std::runtime_error(errorMessage);
+	}
+	if (MH_CreateHook(AlternativeLoadPack_Address, &AlternativeLoadPack_Hook, reinterpret_cast<void**>(&AlternativeLoadPack)) != MH_OK)
+	{
+		std::string errorMessage = std::string("Unable to create AlternativeLoadPack hook at location: %p"), AlternativeLoadPack_Address;
+		Log(errorMessage);
+		throw std::runtime_error(errorMessage);
+	}
+
+
+
+
 	if (MH_CreateHook(Add_Source_Address, &Add_Source_Hook, reinterpret_cast<void**>(&Add_Source)) != MH_OK)
 	{
 		std::string errorMessage = std::string("Unable to create Add_Source hook at location: %p"), Add_Source_Address;

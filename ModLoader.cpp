@@ -56,7 +56,8 @@ void IndexPaks()
 	}
 	for (const auto& entry : fs::directory_iterator(rpacksPath))
 	{
-		if (str_tolower(entry.path().extension().string()) == ".rpack")
+		const auto& entryext = str_tolower(entry.path().extension().string());
+		if (entryext == ".rpack" || entryext == ".rpaco")
 		{
 			ModInfo CurrentMod;
 			CurrentMod.ModName = L"PlaceHolder";
