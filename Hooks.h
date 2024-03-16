@@ -10,7 +10,7 @@
 bool __cdecl Add_Source_Hook(char const* Path, int FFSAddSourceFlags);
 bool __cdecl LoadPack_Hook(__int64 something, const char* path, bool Param, bool Param2, bool Param3, __int64 ResorcePackHandle);
 bool __cdecl OpenPack_Hook(void* ResorceDataPack, const char* path, UINT Param);
-void* __cdecl CResourceDataPack_Hook(void* dis);
+__int64 __cdecl CResourceDataPack_Hook(void* dis);
 
 void __cdecl InitializeGameScript_Hook(LPCSTR param_1);
 

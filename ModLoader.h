@@ -14,6 +14,7 @@ struct ModInfo
 	bool IsRpack = 0;
 	bool WasInitialized = 0;
 };
+std::string str_tolower(std::string s);
 
 void IndexPaks();
 extern std::vector<ModInfo> ModInfoList;
