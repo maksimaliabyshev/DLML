@@ -8,6 +8,9 @@ add_source Add_Source;
 bool Add_Source_Hook(char const* Path, int FFSAddSourceFlags) {
 	bool Status = Add_Source(Path, FFSAddSourceFlags);
 
+	Add_Source("E:\\SteamLibrary\\steamapps\\common\\Dying Light\\Mods\\Rpacks", 79);
+	Add_Source("E:\\SteamLibrary\\steamapps\\common\\Dying Light\\Mods\\Rpacks2", 258);
+
 	const char* thread = "DLML ResPack";
 	if (Status == true) {
 		std::string message = "Added Source: " + (std::string)Path + " SourceFlag: " + std::to_string(FFSAddSourceFlags) + "\n";
@@ -254,7 +257,7 @@ int LoadRpack(std::string Path, UINT param_4) {
 	EVar1 = CResourceDataPack::OpenPack(this, param_2, 0x10);
 	*/
 
-	int EVar5 = OpenPack_Hook(pCVar8, Path.c_str(), param_4);
+	//int EVar5 = OpenPack_Hook(pCVar8, Path.c_str(), param_4);
 
 	if ((param_4 & 1) != 0) {
 		*(UINT*)(*(UINT*)pCVar8 + 0x18) = *(UINT*)(*(UINT*)pCVar8 + 0x18) | 0x1000000;
@@ -267,7 +270,7 @@ int LoadRpack(std::string Path, UINT param_4) {
 	}
 
 
-	//int EVar5 = OpenPack_Hook(pCVar8, Path.c_str(), param_4);
+	int EVar5 = OpenPack_Hook(pCVar8, Path.c_str(), param_4);
 
 	if (EVar5 < 0) {
 		//unload rpack
@@ -310,6 +313,83 @@ int LoadRpack(std::string Path, UINT param_4) {
 	}
 }
 
+void* CCCResourceDataPack(void* Value2)
+{
+	char* Value = (char*)Value2;
+	__int64 lVar1;
+	UINT uVar2;
+	__int64* AllocatedMem;
+	HANDLE pvVar4;
+	void* pvVar5;
+	UINT uVar6;
+
+	// 0x3f3df0  372  ??0CResourceDataPack@@QEAA@XZ
+
+	*(Value + 0x58) = 61;
+	//*(Value + 0x48) = NULL;
+	//*(Value + 0x50) = NULL;
+	//*(Value + 0x60) = NULL;
+	//*(Value + 0x68) = NULL;
+	*(Value + 0x70) = 61;
+	//*(Value + 0x78) = NULL;
+	//*(Value + 0x80) = NULL;
+	*(Value + 0x88) = 61;
+	//*(Value + 0x90) = NULL;
+	//*(Value + 0x98) = NULL;
+	*(Value + 0xa0) = 61;
+	//*(Value + 0xa8) = NULL;
+	//*(Value + 0xb0) = NULL;
+	*(Value + 0xb8) = 61;
+	*(Value + 24)   = *(Value + 24) & 0xf0000000;
+	//*(Value + 0x1c) = NULL;
+
+	AllocatedMem = (__int64*)_aligned_malloc(0x30, 0x10);
+
+	//AllocatedMem = NULL;
+
+	//AllocatedMem[1] = NULL;
+	//AllocatedMem[2] = NULL;
+	//*(AllocatedMem + 3) = NULL;
+	//*(AllocatedMem + 0x1c) = NULL;
+	//AllocatedMem[4] = NULL;
+	//*(AllocatedMem + 5) = 1;
+	pvVar4 = CreateEventA(NULL, 1, 0, NULL);
+	//AllocatedMem[2] = (char)pvVar4;
+	*(Value + 0x10) = *AllocatedMem;
+
+	HMODULE EngineDll = GetModuleHandleA("engine_x64_rwdi.dll");
+	FARPROC Fuckin_Address = (FARPROC)((DWORD_PTR*)EngineDll + 0xa3fa38 / (2 * sizeof(DWORD)));
+	lVar1 = (__int64)Fuckin_Address;
+	
+
+
+	*(Value + 0xc0) = 0;
+	Value = 0;
+	//*(Value + 8) = 0xfffffff6;
+	uVar6 = *(int*)(lVar1 + 0x58) + 1;
+	if (*(UINT*)(lVar1 + 0x5c) < uVar6) {
+		uVar2 = (*(UINT*)(lVar1 + 0x5c) * 10 >> 3) + 0x10 & 0xfffffff0;
+		*(UINT*)(lVar1 + 0x5c) = uVar2;
+		if (uVar2 < uVar6) {
+			*(UINT*)(lVar1 + 0x5c) = uVar6;
+			uVar2 = uVar6;
+		}
+		pvVar5 = realloc(*(void**)(lVar1 + 0x50), (ULONGLONG)(uVar2 * 8));
+		*(void**)(lVar1 + 0x50) = pvVar5;
+	}
+	auto value = *(__int64*)(lVar1 + 0x50);
+	auto value2 = (ULONGLONG) * (UINT*)(lVar1 + 0x58) * 8;
+
+	//*(__int64*)(value + value2) = *(__int64*)Value;
+
+	*(int*)(lVar1 + 0x58) = *(int*)(lVar1 + 0x58) + 1;
+
+	//*(__int64*)(Value + 200) = 0;
+
+	return Value;
+}
+
+std::string quicktest;
 typedef void(__cdecl* initializegamescript)(LPCSTR param_1);
 initializegamescript InitializeGameScript = nullptr;
 void InitializeGameScript_Hook(LPCSTR param_1) {
@@ -320,15 +400,22 @@ void InitializeGameScript_Hook(LPCSTR param_1) {
 	for (size_t i = 0; i < ModInfoList.size(); i++)
 		if (ModInfoList[i].IsRpack) {
 
-			//void* buffthing = malloc(0xd0);
-			//OpenPack_Hook(buffthing, ModInfoList[i].ModPath.c_str(), 0x10);
-			//LoadPack_Hook(ModInfoList[i].ModPath.c_str(), true, true, true, (__int64)buffthing);
-			//buffthing = static_cast<char*>(buffthing) + 8;
-			//LoadData_Hook(buffthing, false);
-			//void* pvVar4 = malloc(0x1040);
+			quicktest = ModInfoList[i].ModPath.c_str();
 
+			void* buffthing = malloc(0xd0);
+			//OpenPack_Hook(buffthing, ModInfoList[i].ModPath.c_str(), 0x10);
+
+			buffthing = malloc(0xd0);
+			void* buffthing2 = malloc(0xd0);
+			//LoadPack_Hook((__int64)buffthing2, ModInfoList[i].ModPath.c_str(), true, true, true, (__int64)buffthing);
+
+			buffthing = static_cast<char*>(buffthing) + 8;
+			//LoadData_Hook(buffthing, false);
+
+			//void* pvVar4 = malloc(0x1040);
+			
 			void* Param_1 = NULL; //Some address to something
-			void* CResourceDataPack = NULL; //void* CResourceDataPack = malloc(0xd0);
+			//void* CResourceDataPack = NULL; //void* CResourceDataPack = malloc(0xd0);
 			std::string Path = ModInfoList[i].ModPath;
 			std::string thread = "DLML ResPack";
 
@@ -344,11 +431,27 @@ void InitializeGameScript_Hook(LPCSTR param_1) {
 				uVar1 = uVar6;
 			}
 
-
 			//bool bruh = AlternativeAltLoadPack_Hook(NULL, Path.c_str());
 			//AddLog("param_5 :  %s\n", std::to_string(bruh));
 			
-			int iVar7 = LoadRpack(Path.c_str(), uVar1);//AlternativeLoadPack_Hook(Param_1, Path.c_str(), CResourceDataPack, uVar1, 0);
+			//int iVar7 = LoadRpack(Path.c_str(), uVar1);
+
+			//AlternativeLoadPack_Hook(Param_1, Path.c_str(), CResourceDataPack, uVar1, 0);
+
+
+
+			void* pCVar8 = malloc(0xD0);
+			if (pCVar8 == NULL) {
+				pCVar8 = NULL;
+			}
+			else {
+				//AddLog("FsExist SubPath :  %p\n", pCVar8);
+				pCVar8 = CCCResourceDataPack(pCVar8);
+			}
+
+			void* buffthing1 = malloc(0xd0);
+			PackLoaderLoad_Hook(pCVar8, ModInfoList[i].ModPath.erase(ModInfoList[i].ModPath.length() - 9, ModInfoList[i].ModPath.length()).c_str(), buffthing1, 0, 0, 0, 1);
+			/*
 			//int iVar7 = -7;
 			AddLog("param_5 :  %i\n", iVar7);
 
@@ -371,20 +474,17 @@ void InitializeGameScript_Hook(LPCSTR param_1) {
 				Log("good\n");
 				//Log(LogType::ERRR, thread, "Loaded         | %s.\n");//, Path, true);
 			}
+			*/
 
 			//void* buffthing = malloc(0xd0);
 			//const char* path = ModInfoList[i].ModPath.c_str();
 			//FsExist_Hook((char*)path);
-			//PackLoaderLoad_Hook(NULL, "../../Mods/Rpacks/common_textures_%d", NULL, 0, 0, 0, 1);
+
+			//PackLoaderLoad_Hook(NULL, "E:/SteamLibrary/steamapps/common/Dying Light/Mods/rpacks/common_textures_0", NULL, 0, 0, 0, 1);
 			//PackLoaderLoad_Hook(NULL, "../../Mods/Rpacks/common_textures_%d", NULL, 0, 0, 1, 1);
 			//PackLoaderLoad_Hook(NULL, "../../Mods/Rpacks/common_textures_%d", NULL, 0, 0, 1, 0);
 			//PackLoaderLoad_Hook(NULL, "../../Mods/Rpacks/common_textures_%d", NULL, 0, 0, 0, 0);
 
-			//void* pvVar41 = malloc(0x1040);
-
-			//void* buffthing1 = malloc(0xd0);
-
-			//PackLoaderLoad_Hook(pvVar41, ModInfoList[i].ModPath.erase(ModInfoList[i].ModPath.length() - 9, ModInfoList[i].ModPath.length()).c_str(), buffthing1, 0, 0, 0, 1);
 
 		}
 		else
