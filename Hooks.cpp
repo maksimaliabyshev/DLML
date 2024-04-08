@@ -50,7 +50,8 @@ typedef void(__cdecl* initializegamescript)(LPCSTR locale);
 initializegamescript InitializeGameScript_Real;
 void InitializeGameScript(LPCSTR locale) {
 	for (size_t i = 0; i < ModInfoList.size(); i++)
-		(void)Add_Source(ModInfoList[i].ModPath.c_str(), 9);
+		if(ModInfoList[i].ModType == 0)
+			(void)Add_Source(ModInfoList[i].ModPath.c_str(), 9);
 
 	return InitializeGameScript_Real(locale);
 }
@@ -62,6 +63,7 @@ BOOL CreateHooks(HMODULE hmodule) {
 
 	globals.WorkingDir = GetWorkingDir();
 	(void)IndexPaks();
+	(void)LoadDlls();
 
 	HMODULE EngineDll = GetModuleHandleSimple("engine_x64_rwdi.dll");
 	HMODULE FilesystemDll = GetModuleHandleSimple("filesystem_x64_rwdi.dll");
