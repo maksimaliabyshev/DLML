@@ -20,8 +20,8 @@ fs::path SetupDir(std::string subfolder) {
 	{
 		if (GetTickCount64() - now > 500)
 		{
-			fs::create_directory(modsPath);
-			fs::create_directory(subPath);
+			(void)fs::create_directory(modsPath);
+			(void)fs::create_directory(subPath);
 
 			now = GetTickCount64();
 		}
@@ -43,7 +43,7 @@ void IndexPaks()
 			CurrentMod.IsEnabled = true;
 			CurrentMod.IsRpack = false;
 			CurrentMod.ModPath = entry.path().string();
-			ModInfoList.push_back(CurrentMod);
+			(void)ModInfoList.push_back(CurrentMod);
 		}
 	}
 }
